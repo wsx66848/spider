@@ -248,7 +248,7 @@ int hash_table_insert(HashTable *hash_table, char *key,
 
 		pair = &(rover->pair);
 
-        if (strcmpi(pair->key, key) == 0) {
+        if (strcasecmp(pair->key, key) == 0) {
 
 			/* Same with the key: use the new key value and free
 			 * the old one */
@@ -309,7 +309,7 @@ int hash_table_lookup(HashTable *hash_table, char *key)
 	while (rover != NULL) {
 		pair = &(rover->pair);
 
-        if (strcmpi(key, pair->key) == 0) {
+        if (strcasecmp(key, pair->key) == 0) {
 
 			/* Found the entry.  Return the data. */
 

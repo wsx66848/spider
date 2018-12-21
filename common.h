@@ -17,7 +17,6 @@
 #endif
 
 #include <pthread.h>
-#include <malloc.h>
 #include <semaphore.h>
 
 #include <event2/bufferevent.h>
@@ -34,6 +33,11 @@
 #include "queue.h"
 #include "bloom.h"
 #include "log.h"
+
+#if defined __APPLE__
+#define strcat_s(d,n,s) snprintf(d, n, "%s%s", d, s)
+#define strcpy_s(d,n,s) snprintf(d, n, "%s", s)
+#endif
 
 #define QUEUE_SIZE 204800
 #define INIT_EDGE_SIZE 102400

@@ -4,6 +4,11 @@
 #include <string.h>
 #include <stdlib.h>
 
+#if defined __APPLE__
+#define strcat_s(d,n,s) snprintf(d, n, "%s%s", d, s)
+#define strcpy_s(d,n,s) snprintf(d, n, "%s", s)
+#endif
+
 // chrome
 #define MAX_URL_LEN 8182
 

@@ -12,7 +12,7 @@ BloomFilter* bloom_init(){
     BloomFilter *p = (BloomFilter *)malloc(sizeof(BloomFilter));
 	p->size = 0;
 	p->filter = (unsigned int *) malloc(BITSIZE/8);
-    p->mutex = PTHREAD_MUTEX_INITIALIZER;
+    p->mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
     memset(p->filter, 0, BITSIZE/8);
 
     // Hash functions

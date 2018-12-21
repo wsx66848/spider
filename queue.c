@@ -9,9 +9,9 @@ queue_t *queue_init(int size){
     queue->size = 0;
     queue->in = 0;
     queue->out = 0;
-    queue->mutex = PTHREAD_MUTEX_INITIALIZER;
-    queue->cond_empty = PTHREAD_COND_INITIALIZER;
-    queue->cond_full = PTHREAD_COND_INITIALIZER;
+    queue->mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
+    queue->cond_empty = (pthread_cond_t)PTHREAD_COND_INITIALIZER;
+    queue->cond_full = (pthread_cond_t)PTHREAD_COND_INITIALIZER;
     return queue;
 }
 

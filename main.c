@@ -1,4 +1,4 @@
-﻿#include "common.h"
+#include "common.h"
 #include "http.h"
 #include "map.h"
 
@@ -12,12 +12,13 @@ SPIDER_CONTEXT* spider_init(){
     evthread_use_windows_threads();
 #else
     evthread_use_pthreads();
+    signal(SIGPIPE, SIG_IGN);
 #endif
     ctx->requested = 0;
     ctx->seq = 0;
     ctx->visited = 0;
     ctx->bf = bloom_init();
-    ctx->mutex = PTHREAD_MUTEX_INITIALIZER;
+    ctx->mutex = (pthread_mutex_t)PTHREAD_MUTEX_INITIALIZER;
     ctx->urls = hash_table_new();
     ctx->edges = arraylist_new(INIT_EDGE_SIZE);
     ctx->req = queue_init(QUEUE_SIZE);

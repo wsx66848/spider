@@ -2,6 +2,7 @@
 #include <sys/types.h>
 #include <time.h>
 #include <stdio.h>
+#include <errno.h>
 
 #ifndef _QUEUE_H
 #define _QUEUE_H
