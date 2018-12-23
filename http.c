@@ -76,7 +76,7 @@ void ReadChunkCallback(struct evhttp_request* remote_rsp, void* arg){
                 if(!strlen(url)){
                      continue;
                 }
-                int len = strlen(url) + strlen(http_ctx->url) + 1;
+                int len = strlen(url) + strlen(http_ctx->url) + 1 + 20;
                 char *new_url = (char*)malloc(len);
                 if(strncmp(url, "http:", 5)==0){
                     // link
@@ -126,7 +126,7 @@ int http_request(SPIDER_CONTEXT* ctx, const char *url){
     http_ctx->parser = (PARSER_CTX*)malloc(sizeof(PARSER_CTX));
     http_ctx->parser->status = START;
     http_ctx->parser->buf = NULL;
-    http_ctx->parser->url = (char *)malloc(MAX_URL_LEN);
+    http_ctx->parser->url = (char *)malloc(MAX_URL_LEN + 20);
 
     http_ctx->uri = evhttp_uri_parse(url);
     if (!http_ctx->uri){

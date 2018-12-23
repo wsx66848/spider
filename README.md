@@ -23,5 +23,6 @@ linux上需要安装libsafec,以及修改makefile，修改INLCUDE,LIB路径,注�
 
 linux上内存越界
 
-##fix
+##fixed
+linux上内存越界，原因是strcpy以及strcat时，dst字符串长度不够。在malloc时多分配些内存即可
 
